@@ -22,20 +22,8 @@ permettant un déploiement reproductible en une seule commande.
 
 ## Structure du projet
 
-ansible-mediawiki/
-├── inventory.ini
-├── site.yml
-└── roles/
-├── apache/
-│   └── tasks/main.yml
-├── php/
-│   └── tasks/main.yml
-├── mariadb/
-│   └── tasks/main.yml
-└── mediawiki/
-├── tasks/main.yml
-└── templates/
-└── mediawiki.conf.j2
+<img width="238" height="276" alt="image" src="https://github.com/user-attachments/assets/b60772d4-35df-4526-8abe-8604447fc5b8" />
+
 
 ## Déploiement
 
