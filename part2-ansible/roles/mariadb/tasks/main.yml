@@ -1,0 +1,32 @@
+---
+- name: Installer MariaDB
+  apt:
+    name: mariadb-server
+    state: present
+    update_cache: yes
+
+- name: Installer PyMySQL (requis par Ansible pour gérer MariaDB)
+  apt:
+    name: python3-pymysql
+    state: present
+
+- name: Démarrer et activer MariaDB
+  service:
+    name: mariadb
+    state: started
+    enabled: yes
+
+- name: Créer la base de données MediaWiki
+  mysql_db:
+    name: mediawiki
+    state: present
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+
+- name: Créer l'utilisateur MediaWiki
+  mysql_user:
+    name: wikiuser
+    password: "motdepassesecret"
+    priv: "mediawiki.*:ALL"
+    host: "192.168.0.114"
+    state: present
+    login_unix_socket: /var/run/mysqld/mysqld.sock

@@ -1,4 +1,6 @@
 # Fichiers sensibles
+inventory.ini
+group_vars/all.yml
 LocalSettings.php
 *.key
 *.crt

@@ -1,0 +1,14 @@
+---
+- name: Configurer le serveur web
+  hosts: webservers
+  become: yes
+  roles:
+    - apache
+    - php
+    - mediawiki
+
+- name: Configurer le serveur de base de données
+  hosts: dbservers
+  become: yes
+  roles:
+    - mariadb

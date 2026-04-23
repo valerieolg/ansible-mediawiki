@@ -1,0 +1,26 @@
+---
+- name: Télécharger MediaWiki
+  get_url:
+    url: "https://releases.wikimedia.org/mediawiki/1.41/mediawiki-1.41.0.tar.gz"
+    dest: /tmp/mediawiki.tar.gz
+
+- name: Extraire MediaWiki dans le répertoire web
+  unarchive:
+    src: /tmp/mediawiki.tar.gz
+    dest: /var/www/html/
+    remote_src: yes
+    extra_opts: [--strip-components=1]
+    creates: /var/www/html/index.php
+
+- name: Déployer la configuration Apache pour MediaWiki
+  template:
+    src: mediawiki.conf.j2
+    dest: /etc/apache2/sites-available/mediawiki.conf
+
+- name: Activer le site MediaWiki
+  command: a2ensite mediawiki.conf
+
+- name: Recharger Apache
+  service:
+    name: apache2
+    state: reloaded

@@ -1,0 +1,15 @@
+<VirtualHost *:80>
+    ServerName 192.168.0.114
+    DocumentRoot /var/www/html
+
+    Alias /mediawiki /var/www/html/mediawiki
+
+    <Directory /var/www/html/mediawiki>
+        Options -Indexes
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
