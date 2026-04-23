@@ -1,0 +1,13 @@
+# Fichiers sensibles
+LocalSettings.php
+*.key
+*.crt
+
+# Fichiers Ansible temporaires
+*.retry
+*.log
+
+# Fichiers système
+.DS_Store
+*.swp
+*~
