@@ -1,0 +1,21 @@
+---
+- name: Installer Apache2
+  apt:
+    name: apache2
+    state: present
+    update_cache: yes
+
+- name: Activer les modules Apache
+  apache2_module:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - rewrite
+    - ssl
+    - headers
+
+- name: Démarrer et activer Apache
+  service:
+    name: apache2
+    state: started
+    enabled: yes

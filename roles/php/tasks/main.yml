@@ -1,0 +1,18 @@
+---
+- name: Installer PHP et extensions requises
+  apt:
+    name:
+      - php
+      - php-mysql
+      - php-xml
+      - php-mbstring
+      - php-intl
+      - php-json
+      - php-curl
+    state: present
+    update_cache: yes
+
+- name: Redémarrer Apache pour activer PHP
+  service:
+    name: apache2
+    state: restarted
